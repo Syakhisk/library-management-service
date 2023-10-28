@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  postgres-db:
+    container_name: postgres-db
+    image: postgres:16-alpine
+    environment:
+      TZ: Asia/Jakarta
+      POSTGRES_USER: ${POSTGRES_USER:-secret}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret}
+      POSTGRES_DB: ${POSTGRES_DBNAME:-app-db}
+    restart: unless-stopped
+    ports:
+      - 5432:5432
